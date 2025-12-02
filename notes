@@ -1,0 +1,4 @@
+npx expo start --clear
+
+npm install nativewind tailwindcss react-native-reanimated react-native-safe-area-context
+npx tailwindcss init
