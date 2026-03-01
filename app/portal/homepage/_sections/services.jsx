@@ -1,9 +1,8 @@
+import JobIcon from "@/app/icons/job-icon";
 import { useNavigation } from "@react-navigation/native";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
-import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
-
 const servicesData = [
   { name: "Jobs", icon: "briefcase", path: "JobHomePage" },
   { name: "Laundry", icon: "tshirt" },
@@ -40,7 +39,8 @@ export default function Services() {
             onPress={() => service.path && navigation.navigate(service.path)}
           >
             <View className="w-20 h-20 bg-gray-200 shadow-blue-800 rounded-full flex items-center justify-center">
-              <FontAwesome5 name={service.icon} size={30} color="#1e40af" />
+              {/* <FontAwesome5 name={service.icon} size={30} color="#1e40af" /> */}
+              <JobIcon />
             </View>
             <Text className="text-sm text-gray-500 text-center">
               {service.name}
