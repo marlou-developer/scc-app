@@ -1,8 +1,11 @@
+import { useNavigation } from "@react-navigation/native";
+import { useRouter } from "expo-router";
 import { useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 
 const servicesData = [
+  { name: "Jobs", icon: "briefcase", path: "JobHomePage" },
   { name: "Laundry", icon: "tshirt" },
   { name: "Water Refilling", icon: "tint" },
   { name: "Delivery", icon: "truck" },
@@ -15,7 +18,6 @@ const servicesData = [
   { name: "Hotels", icon: "hotel" },
   { name: "Gym", icon: "dumbbell" },
   { name: "Booking", icon: "address-book" },
-  { name: "Jobs", icon: "briefcase" },
   { name: "Appointment", icon: "calendar-check" },
   { name: "Loan", icon: "money-check" },
   { name: "News", icon: "newspaper" },
@@ -23,7 +25,8 @@ const servicesData = [
 
 export default function Services() {
   const [showMore, setShowMore] = useState(false);
-
+  const navigation = useNavigation();
+  const router = useRouter();
   const displayedServices = showMore ? servicesData : servicesData.slice(0, 8);
 
   return (
@@ -31,14 +34,18 @@ export default function Services() {
       <Text className="font-bold text-2xl text-blue-800 mx-3">Services</Text>
       <View className="flex flex-wrap flex-row justify-center items-center gap-5 mt-4">
         {displayedServices.map((service, index) => (
-          <View key={index} className="flex flex-col items-center gap-2 w-15">
+          <TouchableOpacity
+            key={index}
+            className="flex flex-col items-center gap-2 w-15"
+            onPress={() => service.path && navigation.navigate(service.path)}
+          >
             <View className="w-20 h-20 bg-gray-200 shadow-blue-800 rounded-full flex items-center justify-center">
               <FontAwesome5 name={service.icon} size={30} color="#1e40af" />
             </View>
             <Text className="text-sm text-gray-500 text-center">
               {service.name}
             </Text>
-          </View>
+          </TouchableOpacity>
         ))}
       </View>
 

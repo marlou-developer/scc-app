@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import { Alert, Pressable, Text, View } from "react-native";
@@ -6,6 +7,7 @@ import Input from "../../../_components/input.jsx";
 import GoogleIcon from "../../../_svg/google-icon.jsx";
 
 export default function FormSection() {
+  const navigation = useNavigation();
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
     email: "",
@@ -19,7 +21,7 @@ export default function FormSection() {
   };
 
   const handleSubmit = async () => {
-     router.push("/portal");
+    navigation.navigate("HomePage");
     // Basic client-side validation
     // if (!form.email.length || !form.password.length) {
     //   Alert.alert("Validation", "Please enter both email and password.");

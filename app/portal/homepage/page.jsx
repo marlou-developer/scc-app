@@ -3,7 +3,7 @@ import HeaderSection from "./_sections/header";
 import Services from "./_sections/services";
 import ServicesDetails from "./_sections/services-details";
 
-export default function Page() {
+export default function HomePage() {
   return (
     <Wrapper>
       <HeaderSection />
